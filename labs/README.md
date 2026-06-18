@@ -4,8 +4,6 @@ Hands-on labs for the Kubernetes workshop. The labs run on dedicated EC2 instanc
 
 ## Student connection
 
-After `terraform apply`:
-
 ```bash
 # Connect as your assigned student number
 ssh studentX@studentX.ts-k8s-workshop.com
