@@ -9,6 +9,10 @@ Hands-on labs for the Kubernetes workshop. The labs run on dedicated EC2 instanc
 ssh studentX@studentX.ts-k8s-workshop.com
 ```
 
+## Harbor registry
+
+Harbor runs at `https://$HARBOR_HOST`. Student credentials match their OS username and password. The `workshop` project is public - students can pull each other's images without authentication.
+
 ## Docker labs
 
 | Lab | File | Topic |
@@ -18,10 +22,6 @@ ssh studentX@studentX.ts-k8s-workshop.com
 | 3 | [lab03-storage.md](lab03-storage.md) | Volumes and bind mounts |
 | 4 | [lab04-dockerfiles-and-multistage.md](lab04-dockerfiles-and-multistage.md) | Dockerfile instructions and multi-stage builds |
 | 5 | [lab05-registry.md](lab05-registry.md) | Build, tag, push, and pull images via Harbor |
-
-## Harbor registry
-
-Harbor runs at `https://$HARBOR_HOST`. Student credentials match their OS username and password. The `workshop` project is public - students can pull each other's images without authentication.
 
 ## Kubernetes labs
 
