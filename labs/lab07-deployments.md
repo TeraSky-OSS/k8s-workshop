@@ -77,7 +77,56 @@ kubectl get deployment nginx -o yaml
 
 ---
 
-## Step 2: Scale the Deployment
+## Step 2: Generate YAML without creating anything
+
+`--dry-run=client -o yaml` runs the command locally, builds the object it would send to the API server, and prints it as YAML - without creating anything in the cluster. It is a quick way to bootstrap a manifest for any resource.
+
+Generate a Deployment manifest for 5 nginx replicas:
+
+```console
+kubectl create deployment nginx --image=nginx --replicas=5 --dry-run=client -o yaml
+```
+
+Example output:
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: nginx
+  name: nginx
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: nginx
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - image: nginx
+        name: nginx
+        resources: {}
+status: {}
+```
+
+The output is valid Kubernetes YAML. Redirect it to a file to use as a starting point:
+
+```console
+kubectl create deployment nginx --image=nginx --replicas=5 --dry-run=client -o yaml > nginx-deployment.yaml
+```
+
+This works for most `kubectl create` subcommands - Deployments, Services, ConfigMaps, and more. Use it whenever you need a YAML scaffold rather than writing one from scratch.
+
+---
+
+## Step 3: Scale the Deployment
 
 Scaling changes the `replicas` field in the Deployment spec. Kubernetes detects the gap and creates new Pods to fill it.
 
@@ -97,7 +146,7 @@ You will see two new Pods appear with `ContainerCreating` and then transition to
 
 ---
 
-## Step 3: Update the image
+## Step 4: Update the image
 
 Updating the image triggers a rolling update. The Deployment creates a new ReplicaSet for the new version and gradually shifts Pods from the old ReplicaSet to the new one. At no point does traffic hit zero running Pods.
 
@@ -134,7 +183,7 @@ kubectl get replicaset
 
 ---
 
-## Step 4: Roll back to revision 1
+## Step 5: Roll back to revision 1
 
 Kubernetes keeps a history of each configuration change to a Deployment. Check it:
 
@@ -172,7 +221,7 @@ The rollback was instant because the old ReplicaSet was never deleted, only scal
 
 ---
 
-## Step 5: Edit YAML and apply
+## Step 6: Edit YAML and apply
 
 So far you've used imperative commands. The declarative approach exports the object as YAML, edits it, and applies the result. `kubectl apply` computes the difference between what you send and what exists in the cluster and only changes what differs.
 
@@ -208,7 +257,7 @@ kubectl get pods
 
 ---
 
-## Step 6: Use kubectl edit to revert
+## Step 7: Use kubectl edit to revert
 
 `kubectl edit` is a shortcut that fetches the live object, opens it in an editor, and applies your changes when you save. It operates directly against the API without needing a local file.
 
