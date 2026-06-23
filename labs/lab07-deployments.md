@@ -198,7 +198,7 @@ Apply the updated file:
 kubectl apply -f nginx-deployment.yaml
 ```
 
-You may see a warning about a missing `last-applied-configuration` annotation. This is expected when applying a file that was exported with `kubectl get` rather than created declaratively. It can be safely ignored — kubectl will patch the annotation automatically.
+You may see a warning about a missing `last-applied-configuration` annotation. This is expected when applying a file that was exported with `kubectl get` rather than created declaratively. It can be safely ignored - kubectl will patch the annotation automatically.
 
 Watch the Pod count drop from 3 to 1. Two Pods will be terminated:
 
