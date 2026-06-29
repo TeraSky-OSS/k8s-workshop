@@ -1,7 +1,7 @@
-# Lab 21: Istio Traffic Management
+# Lab 19: Istio Traffic Management
 
 This lab demonstrates Istio's traffic management features using two versions of a simple echo service. You will split traffic by weight, inject artificial faults, and observe how clients respond to each scenario. All testing is done from the sleep pod inside the mesh with `curl`.
-Prerequisites: Lab 20 must be complete. The `mesh-demo` namespace with sidecar injection enabled must exist.
+Prerequisites: Lab 18 must be complete. The `mesh-demo` namespace with sidecar injection enabled must exist.
 
 ---
 

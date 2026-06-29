@@ -345,7 +345,7 @@ kubectl delete pod probe
 
 ## Step 11: Clean up
 
-Leave the `mesh-demo` namespace and its workloads running. Lab 21 builds on them.
+Leave the `mesh-demo` namespace and its workloads running. Lab 19 builds on them.
 
 You can verify the mesh is healthy before moving on:
 
