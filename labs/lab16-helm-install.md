@@ -1,4 +1,4 @@
-# Lab 17: Install and Explore a Helm Chart
+# Lab 16: Install and Explore a Helm Chart
 
 Helm is Kubernetes' package manager. A chart is a package that bundles all the YAML manifests needed to deploy an application, along with default values and templates. Helm renders the templates with your values, sends the result to the Kubernetes API, and tracks what it deployed as a named release. This gives you upgrades, rollbacks, and a consistent way to manage third-party software.
 
